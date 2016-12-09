@@ -1,7 +1,7 @@
 {
-  "name": "lvl-image-grid",
+  "name": "vote-image-grid",
   "description": "Image grid",
-  "main": "lvl-image-grid.html",
+  "main": "vote-image-grid.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "app-route": "PolymerElements/app-route#^0.9.3",
