@@ -1,0 +1,215 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../app-route/app-route.html">
+<link rel="import" href="../paper-tabs/paper-tabs.html">
+<link rel="import" href="../paper-styles/paper-styles-classes.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../neon-animation/neon-animated-pages.html">
+<link rel="import" href="../neon-animation/animations/slide-from-left-animation.html">
+<link rel="import" href="../neon-animation/animations/slide-right-animation.html">
+
+
+<!--
+`lvl-image-grid`
+Image grid
+
+@demo demo/index.html 
+-->
+
+<dom-module id="vote-image-grid">
+  <template>
+      <style>
+          :host {
+              display: block;
+              position: absolute;
+              top:0;
+              right:0;
+              bottom:0;
+              left:0;
+          }
+          
+          
+          paper-tab {
+              padding: 2px;
+              padding-right: 10px;
+          }
+          paper-tab div {
+              width: 100%;
+              height: 100%;
+          }
+          neon-animated-pages {
+              margin: 2px;
+              border: 2px solid grey;
+          }
+          
+          
+          
+          .menu-tab {
+              display: table;
+              height: 100%;
+              width: 100%;
+              background-color: var(--paper-grey-300);
+              border: 4px solid white;
+          }
+          .iron-selected .menu-tab {
+              background-color: var(--paper-light-blue-500);
+          }
+          .menu-tab .column {
+              display: table-cell;
+              height: 100%;
+              width: 50%;
+          }
+          .menu-tab .column-right {
+              border-left: 2px solid white;
+          }
+          .menu-tab .column-left {
+              border-right: 2px solid white;
+          }
+          .menu-tab .column .row {
+              height: 50%;
+              width: 100%;
+          }
+          .menu-tab .column .row-top {
+               border-bottom: 2px solid white;
+          }
+          .menu-tab .column .row-bottom {
+               border-top: 2px solid white;
+          }
+          
+          
+          
+          .grid-container {
+              display: table;
+              height: 100%;
+              width: 100%;
+          }
+          .grid-container .column {
+              display: table-cell;
+              height: 100%;
+              width: 50%;
+              border: 1px solid grey;
+          }
+          .grid-container .menu {
+              border: 2px solid white;
+              background-color: grey;
+          }
+          .grid-container .row {
+              height: 50%;
+              width: 100%;
+              border: 1px solid grey;
+          }
+          .grid-container .menu-row {
+              height: 50%;
+              width: 100%;
+              border: 2px solid white;
+          }
+          
+          
+          .footer {
+              width: 100%;
+              height: 70px;
+              border-top: 1px solid grey;
+              margin-top: 10px;
+          }
+          
+      </style>
+      <app-route route="{{route}}" pattern="/tabs/:tabName" data="{{data}}">
+      </app-route>
+      
+      <div id="container" class="fit">
+          <paper-tabs selected='{{data.tabName}}' attr-for-selected='key'>
+              <paper-tab key='one'>
+                  <div class="menu-tab"></div>
+              </paper-tab>
+              <paper-tab key='two'>
+                  <div class="menu-tab">
+                      <div class="column column-left"></div>
+                      <div class="column column-right"></div>
+                  </div>
+              </paper-tab>
+              <paper-tab key='three'>
+                   <div class="menu-tab">
+                      <div class="column column-left"></div>
+                      <div class="column column-right">
+                          <div class="row row-top">
+                          </div>
+                          <div class="row row-bottom">
+                          </div>
+                      </div>
+                  </div>
+              </paper-tab>
+              <paper-tab key='four'>
+                  <div class="menu-tab">
+                      <div class="column column-left">
+                          <div class="row row-top">
+                          </div>
+                          <div class="row row-bottom">
+                          </div>
+                      </div>
+                      <div class="column column-right">
+                          <div class="row row-top">
+                          </div>
+                          <div class="row row-bottom">
+                          </div>
+                      </div>
+                  </div>
+              </paper-tab>
+          </paper-tabs>
+          <neon-animated-pages selected='{{data.tabName}}'
+                               attr-for-selected='key'
+                               entry-animation='slide-from-left-animation'
+                               exit-animation='slide-right-animation'>
+              <neon-animatable key='one'>
+                  <div class="grid-container"></div>
+              </neon-animatable>
+              <neon-animatable key='two'>
+                  <div class="grid-container">
+                      <div class="column"></div>
+                      <div class="column"></div>
+                  </div>
+              </neon-animatable>
+              <neon-animatable key='three'>
+                  <div class="grid-container">
+                      <div class="column"></div>
+                      <div class="column">
+                          <div class="row">
+                          </div>
+                          <div class="row">
+                          </div>
+                      </div>
+                  </div>
+              </neon-animatable>
+              <neon-animatable key='four'>
+                  <div class="grid-container">
+                      <div class="column">
+                          <div class="row">
+                          </div>
+                          <div class="row">
+                          </div>
+                      </div>
+                      <div class="column">
+                          <div class="row">
+                          </div>
+                          <div class="row">
+                          </div>
+                      </div>
+                  </div>
+              </neon-animatable>
+          </neon-animated-pages>
+          <div class="footer">
+          </div>
+      </div>
+  </template>
+
+  <script>
+    Polymer({
+        is: 'vote-image-grid',
+        properties: {
+        },
+        attached: function() {
+            this.$$('paper-tabs').style.height = this.$$('paper-tabs paper-tab').clientWidth + 'px';
+            this.$$('neon-animated-pages').style.height = 
+                this.$.container.clientHeight - (this.$$('paper-tabs').clientHeight + this.$$('.footer').clientHeight) + 'px';
+        }
+    });
+  </script>
+</dom-module>
