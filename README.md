@@ -1,4 +1,4 @@
-# \<lvl-image-grid\>
+# \<vote-image-grid\>
 
 Image grid
 
