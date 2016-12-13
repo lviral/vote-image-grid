@@ -6,7 +6,8 @@
     "polymer": "Polymer/polymer#^1.4.0",
     "app-route": "PolymerElements/app-route#^0.9.3",
     "paper-tabs": "PolymerElements/paper-tabs#^1.7.0",
-    "neon-animation": "PolymerElements/neon-animated-pages#^1.2.4"
+    "neon-animation": "PolymerElements/neon-animated-pages#^1.2.4",
+    "vote-image-placeholder": "lviral/vote-image-placeholder"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

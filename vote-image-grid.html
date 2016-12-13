@@ -6,6 +6,7 @@
 <link rel="import" href="../neon-animation/neon-animated-pages.html">
 <link rel="import" href="../neon-animation/animations/slide-from-left-animation.html">
 <link rel="import" href="../neon-animation/animations/slide-right-animation.html">
+<link rel="import" href="../vote-image-placeholder/vote-image-placeholder.html">
 
 
 <!--
@@ -19,12 +20,10 @@ Image grid
   <template>
       <style>
           :host {
+              min-height: 100vh;
+              position: relative;
+              margin: 0;
               display: block;
-              position: absolute;
-              top:0;
-              right:0;
-              bottom:0;
-              left:0;
           }
           
           
@@ -76,31 +75,32 @@ Image grid
           }
           
           
-          
-          .grid-container {
-              display: table;
+          .image-container {
+              display: block;
               height: 100%;
               width: 100%;
           }
-          .grid-container .column {
-              display: table-cell;
-              height: 100%;
+          .image-container .column {
               width: 50%;
-              border: 1px solid grey;
+              height: 100%;
           }
-          .grid-container .menu {
-              border: 2px solid white;
-              background-color: grey;
+          .image-container .right {
+              float: right;
           }
-          .grid-container .row {
+          .image-container .row {
               height: 50%;
-              width: 100%;
-              border: 1px solid grey;
           }
-          .grid-container .menu-row {
-              height: 50%;
-              width: 100%;
-              border: 2px solid white;
+          .image-container .border-top {
+              border-top: 3px solid white;
+          }
+          .image-container .border-right {
+              border-right: 3px solid white;
+          }
+          .image-container .border-bottom {
+              border-bottom: 3px solid white;
+          }
+          .image-container .border-left {
+              border-left: 3px solid white;
           }
           
           
@@ -159,38 +159,36 @@ Image grid
                                entry-animation='slide-from-left-animation'
                                exit-animation='slide-right-animation'>
               <neon-animatable key='one'>
-                  <div class="grid-container"></div>
+                  <div class="image-container">
+                      <vote-image-placeholder mode="add"></vote-image-placeholder>
+                  </div>
               </neon-animatable>
               <neon-animatable key='two'>
-                  <div class="grid-container">
-                      <div class="column"></div>
-                      <div class="column"></div>
+                  <div class="image-container">
+                      <vote-image-placeholder mode="add" class="column right"></vote-image-placeholder>
+                      <vote-image-placeholder mode="add" class="column"></vote-image-placeholder>
                   </div>
               </neon-animatable>
               <neon-animatable key='three'>
-                  <div class="grid-container">
-                      <div class="column"></div>
+                  <div class="image-container">
+                      <div class="column right">
+                        <vote-image-placeholder mode="add" class="row"></vote-image-placeholder>
+                        <vote-image-placeholder mode="add" class="row"></vote-image-placeholder>
+                      </div>
                       <div class="column">
-                          <div class="row">
-                          </div>
-                          <div class="row">
-                          </div>
+                        <vote-image-placeholder mode="add"></vote-image-placeholder>
                       </div>
                   </div>
               </neon-animatable>
               <neon-animatable key='four'>
-                  <div class="grid-container">
-                      <div class="column">
-                          <div class="row">
-                          </div>
-                          <div class="row">
-                          </div>
+                  <div class="image-container">
+                      <div class="column right">
+                        <vote-image-placeholder mode="add" class="row"></vote-image-placeholder>
+                        <vote-image-placeholder mode="add" class="row"></vote-image-placeholder>
                       </div>
                       <div class="column">
-                          <div class="row">
-                          </div>
-                          <div class="row">
-                          </div>
+                        <vote-image-placeholder mode="add" class="row"></vote-image-placeholder>
+                        <vote-image-placeholder mode="add" class="row"></vote-image-placeholder>
                       </div>
                   </div>
               </neon-animatable>

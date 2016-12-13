@@ -1,0 +1,26 @@
+{
+  "name": "vote-image-placeholder",
+  "description": "Image place holder for photos and images",
+  "main": "vote-image-placeholder.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-fab": "PolymerElements/paper-fab#^1.2.1"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "homepage": "https://github.com/lviral/vote-image-placeholder",
+  "_release": "c4e65fac88",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "c4e65fac884d2ac7bad5485636d25fd8c1a6a106"
+  },
+  "_source": "https://github.com/lviral/vote-image-placeholder.git",
+  "_target": "*",
+  "_originalSource": "lviral/vote-image-placeholder",
+  "_direct": true
+}

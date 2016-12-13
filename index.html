@@ -5,6 +5,13 @@
     <title>vote-image-grid</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script>
+    /* this script must run before Polymer is imported */
+    window.Polymer = {
+      dom: 'shadow',
+      lazyRegister: true
+    };
+  </script>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <!--<link rel="import" href="../iron-component-page/iron-component-page.html">-->
     <link rel="import" href="vote-image-grid.html">
