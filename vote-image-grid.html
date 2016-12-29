@@ -10,7 +10,7 @@
 
 
 <!--
-`lvl-image-grid`
+`vote-image-grid`
 Image grid
 
 @demo demo/index.html 
@@ -20,7 +20,7 @@ Image grid
   <template>
       <style>
           :host {
-              min-height: 100vh;
+              height: 100%;
               position: relative;
               margin: 0;
               display: block;
@@ -116,7 +116,7 @@ Image grid
       </app-route>
       
       <div id="container" class="fit">
-          <paper-tabs selected='{{data.tabName}}' attr-for-selected='key'>
+          <paper-tabs selected='{{data.tabName}}' attr-for-selected='key' on-iron-select="_setCurrentImagesSet">
               <paper-tab key='one'>
                   <div class="menu-tab"></div>
               </paper-tab>
@@ -160,7 +160,7 @@ Image grid
                                exit-animation='slide-right-animation'>
               <neon-animatable key='one'>
                   <div class="image-container">
-                      <vote-image-placeholder mode="add"></vote-image-placeholder>
+                      <vote-image-placeholder mode="add" image-data="{{imageOneOne}}"></vote-image-placeholder>
                   </div>
               </neon-animatable>
               <neon-animatable key='two'>
@@ -193,8 +193,8 @@ Image grid
                   </div>
               </neon-animatable>
           </neon-animated-pages>
-          <div class="footer">
-          </div>
+          <!--<div class="footer">
+          </div>-->
       </div>
   </template>
 
@@ -202,11 +202,34 @@ Image grid
     Polymer({
         is: 'vote-image-grid',
         properties: {
+            imagesFiles: {
+                type: Array,
+                value: [],
+                notify: true
+            }
         },
         attached: function() {
             this.$$('paper-tabs').style.height = this.$$('paper-tabs paper-tab').clientWidth + 'px';
             this.$$('neon-animated-pages').style.height = 
-                this.$.container.clientHeight - (this.$$('paper-tabs').clientHeight + this.$$('.footer').clientHeight) + 'px';
+                this.$.container.clientHeight - (this.$$('paper-tabs').clientHeight /*+ this.$$('.footer').clientHeight*/) + 'px';
+        },
+        _setCurrentImagesSet: function() {
+            this.imagesFiles = [];
+            var imageList = Polymer.dom(this.root).querySelectorAll('neon-animated-pages .iron-selected vote-image-placeholder');
+            var files = [];
+            imageList.forEach(function(item){
+                files.push(item.file);
+            });
+            this.imagesFiles = files;
+            console.log(this.imagesFiles);
+        },
+        _getImages: function() {
+            var imageList = Polymer.dom(this.root).querySelectorAll('neon-animated-pages .iron-selected vote-image-placeholder');
+            var files = [];
+            imageList.forEach(function(item){
+                files.push(item.file);
+            });
+            return files;
         }
     });
   </script>
